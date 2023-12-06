@@ -1,12 +1,11 @@
 import java.util.Scanner
 
 fun main() {
-    // Test each function
+    // Test the functions
     checkOddOrEven()
     checkPalindrome()
     calculateArraySumAndAverage()
     searchInArray()
-    subtractMatrices()
 }
 
 fun checkOddOrEven() {
@@ -14,11 +13,15 @@ fun checkOddOrEven() {
     print("Enter a number to check if it's odd or even: ")
     val number = scanner.nextInt()
 
-    if (number % 2 == 0) {
+    if (isEven(number)) {
         println("$number is even.")
     } else {
         println("$number is odd.")
     }
+}
+
+fun isEven(number: Int): Boolean {
+    return number % 2 == 0
 }
 
 fun checkPalindrome() {
@@ -26,13 +29,16 @@ fun checkPalindrome() {
     print("Enter a string to check if it's a palindrome: ")
     val inputString = scanner.nextLine().toLowerCase()
 
-    val reversedString = inputString.reversed()
-
-    if (inputString == reversedString) {
+    if (isPalindrome(inputString)) {
         println("$inputString is a palindrome.")
     } else {
         println("$inputString is not a palindrome.")
     }
+}
+
+fun isPalindrome(str: String): Boolean {
+    val cleanStr = str.replace("\\s+".toRegex(), "")
+    return cleanStr == cleanStr.reversed()
 }
 
 fun calculateArraySumAndAverage() {
