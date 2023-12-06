@@ -1,11 +1,11 @@
 import java.util.Scanner
 
 fun main() {
-    // Test the functions
     checkOddOrEven()
     checkPalindrome()
     calculateArraySumAndAverage()
     searchInArray()
+    subtractMatrices()
 }
 
 fun checkOddOrEven() {
@@ -79,5 +79,52 @@ fun searchInArray() {
         println("$searchString is found in the array.")
     } else {
         println("$searchString is not found in the array.")
+    }
+}
+
+fun subtractMatrices() {
+    val scanner = Scanner(System.`in`)
+    print("Enter the number of rows and columns for the matrices: ")
+    val rowsColumns = scanner.nextInt()
+
+    println("Enter the elements of the first matrix:")
+    val matrix1 = createMatrix(rowsColumns, scanner)
+
+    println("Enter the elements of the second matrix:")
+    val matrix2 = createMatrix(rowsColumns, scanner)
+
+    val resultMatrix = subtractMatrices(matrix1, matrix2)
+
+    println("Resultant Matrix (First Matrix - Second Matrix):")
+    printMatrix(resultMatrix)
+}
+
+fun createMatrix(rowsColumns: Int, scanner: Scanner): Array<IntArray> {
+    val matrix = Array(rowsColumns) { IntArray(rowsColumns) }
+
+    for (i in 0 until rowsColumns) {
+        for (j in 0 until rowsColumns) {
+            matrix[i][j] = scanner.nextInt()
+        }
+    }
+
+    return matrix
+}
+
+fun subtractMatrices(matrix1: Array<IntArray>, matrix2: Array<IntArray>): Array<IntArray> {
+    val resultMatrix = Array(matrix1.size) { IntArray(matrix1[0].size) }
+
+    for (i in matrix1.indices) {
+        for (j in matrix1[i].indices) {
+            resultMatrix[i][j] = matrix1[i][j] - matrix2[i][j]
+        }
+    }
+
+    return resultMatrix
+}
+
+fun printMatrix(matrix: Array<IntArray>) {
+    for (row in matrix) {
+        println(row.joinToString(" "))
     }
 }
