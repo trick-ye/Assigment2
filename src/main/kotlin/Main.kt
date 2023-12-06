@@ -75,39 +75,3 @@ fun searchInArray() {
         println("$searchString is not found in the array.")
     }
 }
-
-fun subtractMatrices() {
-    val scanner = Scanner(System.`in`)
-    print("Enter the number of rows: ")
-    val rows = scanner.nextInt()
-    print("Enter the number of columns: ")
-    val columns = scanner.nextInt()
-
-    println("Enter the elements of the first matrix:")
-    val matrix1 = Array(rows) { IntArray(columns) }
-    for (i in 0 until rows) {
-        for (j in 0 until columns) {
-            matrix1[i][j] = scanner.nextInt()
-        }
-    }
-
-    println("Enter the elements of the second matrix:")
-    val matrix2 = Array(rows) { IntArray(columns) }
-    for (i in 0 until rows) {
-        for (j in 0 until columns) {
-            matrix2[i][j] = scanner.nextInt()
-        }
-    }
-
-    val resultMatrix = Array(rows) { IntArray(columns) }
-    for (i in 0 until rows) {
-        for (j in 0 until columns) {
-            resultMatrix[i][j] = matrix1[i][j] - matrix2[i][j]
-        }
-    }
-
-    println("Resultant Matrix (First Matrix - Second Matrix):")
-    for (row in resultMatrix) {
-        println(row.joinToString(" "))
-    }
-}
